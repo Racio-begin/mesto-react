@@ -1,58 +1,26 @@
 import React from 'react';
 // import logo from './logo.svg';
-import './index.css';
-import logo from '../src/images/logo.svg'
+import '../index.css';
+
+import logo from '../images/logo.svg'
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
 
 function App() {
 	return (
 		<div className="page">
 
-			<header className="header page__header">
-				<img
-					className="header__logo"
-					src= {logo}
-					alt="Логотип сайта Mesto Russia"
-				/>
-			</header>
+			<Header logo={logo} />
 
-			<main className="content">
-				<section className="profile">
-					<div className="profile__content">
-						<button className="button profile__button-avatar-edit" type="button">
-							<img
-								className="profile__avatar"
-								src="<%=require('./images/Jacques-Yves_Cousteau.jpg')%>"
-								alt="Фотография пользователя"
-							/>
-							{/* <img class="profile__avatar" src="<%=require('./images/render_loading.gif')%>" alt="Фотография пользователя"> */}
-						</button>
-						<div className="profile__info">
-							<h1 className="profile__username">Жак-Ив Кусто</h1>
-							<button
-								className="profile__button-edit button"
-								type="button"
-								aria-label="Редактировать информацию в профиле"
-							/>
-							<p className="profile__description">Исследователь океана</p>
-						</div>
-					</div>
-					<button
-						className="button profile__button-add"
-						type="button"
-						aria-label="Добавить фотографии"
-					/>
-				</section>
+			<Main
+			// onEditAvatar={handleEditAvatarClick}
+			// onEditProfile={handleEditProfileClick}
+			// onAddPlace={handleAddPlaceClick}
+			// onCardClick={handleCardClick}
+			/>
 
-				<section className="elements">
-					<ul className="elements__content"></ul>
-				</section>
-			</main>
-
-			<footer className="footer page__footer">
-				<p className="footer__copyright" lang="en">
-					©2023&nbsp;Mesto&nbsp;Russia
-				</p>
-			</footer>
+			<Footer />
 
 			{/*----     POPUP редактирования аватара    ----*/}
 			<div className="popup popup_type_edit-avatar">
