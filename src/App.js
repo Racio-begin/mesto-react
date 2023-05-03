@@ -1,18 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import './index.css'
+// import logo from './logo.svg';
+import './index.css';
+import logo from '../src/images/logo.svg'
 
 function App() {
 	return (
-		<>
+		<div className="page">
+
 			<header className="header page__header">
 				<img
 					className="header__logo"
-					src="<%=require('./images/header-logo.svg')%>"
+					src= {logo}
 					alt="Логотип сайта Mesto Russia"
 				/>
 			</header>
+
 			<main className="content">
 				<section className="profile">
 					<div className="profile__content">
@@ -40,15 +42,18 @@ function App() {
 						aria-label="Добавить фотографии"
 					/>
 				</section>
+
 				<section className="elements">
 					<ul className="elements__content"></ul>
 				</section>
 			</main>
+
 			<footer className="footer page__footer">
 				<p className="footer__copyright" lang="en">
 					©2023&nbsp;Mesto&nbsp;Russia
 				</p>
 			</footer>
+
 			{/*----     POPUP редактирования аватара    ----*/}
 			<div className="popup popup_type_edit-avatar">
 				<div className="popup__container popup__container_type_avatar">
@@ -79,6 +84,7 @@ function App() {
 					</form>
 				</div>
 			</div>
+
 			{/*----     POPUP редактирования профиля    ----*/}
 			<div className="popup popup_type_edit-profile">
 				<div className="popup__container">
@@ -123,6 +129,7 @@ function App() {
 					</form>
 				</div>
 			</div>
+
 			{/*----     POPUP добавления карточки    ----*/}
 			<div className="popup popup_type_add-card">
 				<div className="popup__container">
@@ -169,6 +176,7 @@ function App() {
 					</form>
 				</div>
 			</div>
+
 			{/*----     POPUP открытия карточки    ----*/}
 			<div className="popup popup_type_zoom-image">
 				<div className="popup__container-image">
@@ -182,6 +190,7 @@ function App() {
 					<h3 className="popup__title-photo" />
 				</div>
 			</div>
+
 			{/*----     POPUP подтвержения удаления карточки    ----*/}
 			<div className="popup popup_type_delete-card">
 				<div className="popup__container popup__container_type_delete-card">
@@ -199,9 +208,11 @@ function App() {
 					</form>
 				</div>
 			</div>
+
 			{/*----     Шаблон карточки    ----*/}
 			<template id="elements__template" />
-		</>
+
+		</div>
 
 	);
 }
