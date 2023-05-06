@@ -9,7 +9,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 				<div className="profile__content">
 
 					<button
-						onClick={handleEditAvatarClick}
+						onClick={onEditAvatar}
 						className="button profile__button-avatar-edit" type="button">
 						<img
 							className="profile__avatar"
@@ -22,7 +22,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 					<div className="profile__info">
 						<h1 className="profile__username">Жак-Ив Кусто</h1>
 						<button
-							onClick={handleEditProfileClick}
+							onClick={onEditProfile}
 							className="profile__button-edit button"
 							type="button"
 							aria-label="Редактировать информацию в профиле"
@@ -33,7 +33,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 				</div>
 
 				<button
-					onClick={handleAddPlaceClick}
+					onClick={onAddPlace}
 					className="button profile__button-add"
 					type="button"
 					aria-label="Добавить фотографии"
