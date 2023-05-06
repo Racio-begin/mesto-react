@@ -1,5 +1,4 @@
-import React from 'react';
-// import logo from './logo.svg';
+import React, { useState } from 'react';
 import '../index.css';
 
 import logo from '../images/logo.svg'
@@ -7,26 +6,80 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup';
 
 function App() {
+
+	const [isEditAvatarPopupOpen, setEditAvatarPopupOpened] = useState(false);
+	const [isAddPlacePopupOpen, setAddPlacePopupOpened] = useState(false);
+	const [isEditProfilePopupOpen, setEditProfileOpened] = useState(false);
+	const [selectedCard, setSelectedCard] = useState(null);
+
+	function handleEditAvatarClick() {
+		setEditAvatarPopupOpened(true)
+	};
+
+	function handleEditProfileClick() {
+		setEditProfileOpened(true)
+	};
+
+	function handleAddPlaceClick() {
+		setAddPlacePopupOpened(true)
+	};
+
+	function handleCardClick(card) {
+		setSelectedCard(card)
+	};
 
 	return (
 		<div className="page">
 
-			<Header logo={logo} />
+			<div className="page__content">
+				<Header logo={logo} />
 
-			<Main
-			// onEditAvatar={handleEditAvatarClick}
-			// onEditProfile={handleEditProfileClick}
-			// onAddPlace={handleAddPlaceClick}
-			// onCardClick={handleCardClick}
-			/>
+				<Main
+					onEditAvatar={handleEditAvatarClick}
+					onEditProfile={handleEditProfileClick}
+					onAddPlace={handleAddPlaceClick}
+					onCardClick={handleCardClick}
+				/>
 
-			<Footer />
+				<Footer />
+			</div>
 
-			{/*----     POPUP редактирования аватара    ----*/}
+			{/* <----     POPUP редактирования профиля    ----> */}
+			<PopupWithForm name="edit-profile" title="Редактировать профиль" isOpen={isEditProfilePopupOpen} onClose={handleClosePopup}>
+				<input
+					className="popup__input popup__input_type_username"
+					type="text"
+					name="username"
+					id="username"
+					placeholder="Введите ваше имя"
+					minLength={2}
+					maxLength={40}
+					required=""
+				/>
+				<span className="username-error popup__input-error" />
+				<input
+					className="popup__input popup__input_type_description"
+					type="text"
+					name="description"
+					id="description"
+					placeholder="Введите информацию о себе"
+					minLength={2}
+					maxLength={200}
+					required=""
+				/>
+				<span className="description-error popup__input-error" />
+			</PopupWithForm>
+
+			<PopupWithForm >
+
+			</PopupWithForm>
+
+			{/* ----     POPUP редактирования аватара    ----
 			<div className="popup popup_type_edit-avatar">
-				<div className="popup__container popup__container_type_avatar">
+				<div className="popup__container popup__container_type_edit-avatar">
 					<button
 						className="button popup__button-close"
 						name="popupCloseButton"
@@ -53,9 +106,9 @@ function App() {
 						</button>
 					</form>
 				</div>
-			</div>
+			</div> */}
 
-			{/*----     POPUP редактирования профиля    ----*/}
+			{/* ----     POPUP редактирования профиля    ----
 			<div className="popup popup_type_edit-profile">
 				<div className="popup__container">
 					<button
@@ -98,9 +151,9 @@ function App() {
 						</button>
 					</form>
 				</div>
-			</div>
+			</div> */}
 
-			{/*----     POPUP добавления карточки    ----*/}
+			{/* ----     POPUP добавления карточки    ----
 			<div className="popup popup_type_add-card">
 				<div className="popup__container">
 					<button
@@ -145,9 +198,9 @@ function App() {
 						</button>
 					</form>
 				</div>
-			</div>
+			</div> */}
 
-			{/*----     POPUP открытия карточки    ----*/}
+			{/* ----     POPUP открытия карточки    ----
 			<div className="popup popup_type_zoom-image">
 				<div className="popup__container-image">
 					<button
@@ -159,9 +212,9 @@ function App() {
 					<img className="popup__photo" src="#" alt="" />
 					<h3 className="popup__title-photo" />
 				</div>
-			</div>
+			</div> */}
 
-			{/*----     POPUP подтвержения удаления карточки    ----*/}
+			{/* ----     POPUP подтвержения удаления карточки    ----
 			<div className="popup popup_type_delete-card">
 				<div className="popup__container popup__container_type_delete-card">
 					<button className="button popup__button-close" type="button" />
@@ -177,10 +230,10 @@ function App() {
 						</button>
 					</form>
 				</div>
-			</div>
+			</div> */}
 
-			{/*----     Шаблон карточки    ----*/}
-			<template id="elements__template" />
+			{/* ----     Шаблон карточки    ----
+			<template id="elements__template" /> */}
 
 		</div>
 

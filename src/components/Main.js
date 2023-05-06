@@ -1,21 +1,6 @@
 import React from 'react';
 
-function Main() {
-
-	function handleEditAvatarClick() {
-		const popup = document.querySelector('.popup_type_edit-avatar');
-		popup.classList.add('popup_opened');
-	}
-
-	function handleEditProfileClick() {
-		const popup = document.querySelector('.popup_type_edit-profile');
-		popup.classList.add('popup_opened');
-	}
-
-	function handleAddPlaceClick() {
-		const popup = document.querySelector('.popup_type_add-card');
-		popup.classList.add('popup_opened');
-	}
+function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 
 	return (
 		<main className="content">
