@@ -7,7 +7,7 @@ function Footer() {
 				©2023&nbsp;Mesto&nbsp;Russia
 			</p>
 		</footer>
-	)
+	);
 };
 
 export default Footer

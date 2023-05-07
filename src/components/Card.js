@@ -14,11 +14,13 @@ function Card(props) {
 					alt={props.card.name}
 					onClick={handleClick}
 				/>
+
 				<button
 					className="button element__button-bin"
 					type="button"
 					aria-label="Удалить место"
 				/>
+
 				<div className="element__description">
 					<h2 className="element__place">{props.card.name}</h2>
 					<div className="element__likes-container">

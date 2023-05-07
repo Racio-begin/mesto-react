@@ -128,12 +128,7 @@ function App() {
 			{/* <----     POPUP открытия карточки    ----> */}
 			<ImagePopup card={selectedCard} onClose={handleClosePopup}></ImagePopup>
 
-
-			{/* ----     Шаблон карточки    ----
-			<template id="elements__template" /> */}
-
 		</div>
-
 	);
 
 };

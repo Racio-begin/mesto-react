@@ -18,11 +18,12 @@ function PopupWithForm({ name, title, isOpen, onClose, ...props }) {
 
 				<form
 					className="popup__form"
-					name={`${name}-form`}
-					id={`${name}-form`}
-					noValidate=""
-				// либо так noValidate
-				>
+					// name={`${name}-form`}
+					// id={`${name}-form`}
+					name={name}
+					id={name}
+					noValidate="">
+
 					{props.children}
 
 					<button
@@ -36,6 +37,7 @@ function PopupWithForm({ name, title, isOpen, onClose, ...props }) {
 			</div>
 		</div>
 	)
+
 };
 
 export default PopupWithForm
