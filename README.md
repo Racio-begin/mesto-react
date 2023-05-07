@@ -1,6 +1,6 @@
 # Проект: Mesto Russia
 
-![Превью: Жак-Ив Кусто](https://github.com/Racio-begin/mesto/blob/main/src/images/mesto_preview.png)
+![Превью: Жак-Ив Кусто](https://github.com/Racio-begin/mesto/blob/main/src/images/mesto-react_preview.png)
 
 
 ## Данный проект представляет собой развитие одностраничного сайт с профилем пользователя и секцией с карточками, где люди делятся красивейшими местами России.
