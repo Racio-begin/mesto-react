@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Card from './Card';
 import api from '../utils/Api';
 import defaultUserAvatar from '../images/render_loading.gif'
@@ -11,24 +11,15 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 	const [cards, setCards] = useState([]);
 
 	useEffect(() => {
-		api.getUserData()
-			.then(
-				(userInfo) => (
-					setUserName(userInfo.name),
+		Promise.all([api.getUserData(), api.getInitialCards()])
+			.then(([userInfo, cards]) => {
+				setUserName(userInfo.name),
 					setUserDescription(userInfo.about),
-					setUserAvatar(userInfo.avatar)
-				)
-			)
-			.catch((err) => console.log(`Ошибка ${err}`))
-	}, []);
-
-	useEffect(() => {
-		api.getInitialCards()
-			.then(
-				(cards) =>
+					setUserAvatar(userInfo.avatar),
 					setCards(cards)
+			})
+			.catch((err) => console.log(`Ошибка в промисах: ${err}`)
 			)
-			.catch((err) => console.log(`Ошибка ${err}`))
 	}, []);
 
 	return (

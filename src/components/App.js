@@ -39,10 +39,6 @@ function App() {
 		setSelectedCard(null);
 	};
 
-	function handleClosePopup() {
-		closeAllPopups()
-	};
-
 	return (
 		<div className="page">
 
@@ -60,7 +56,7 @@ function App() {
 			</div>
 
 			{/* <----     POPUP редактирования аватара    ----> */}
-			<PopupWithForm name="edit-avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen} onClose={handleClosePopup}>
+			<PopupWithForm name="edit-avatar" title="Обновить аватар" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
 				<input
 					className="popup__input popup__input_type_avatar"
 					type="url"
@@ -73,7 +69,7 @@ function App() {
 			</PopupWithForm>
 
 			{/* <----     POPUP редактирования профиля    ----> */}
-			<PopupWithForm name="edit-profile" title="Редактировать профиль" isOpen={isEditProfilePopupOpen} onClose={handleClosePopup}>
+			<PopupWithForm name="edit-profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
 				<input
 					className="popup__input popup__input_type_username"
 					type="text"
@@ -99,7 +95,7 @@ function App() {
 			</PopupWithForm>
 
 			{/* <----     POPUP добавления карточки    ----> */}
-			<PopupWithForm name="add-card" title="Новое место" isOpen={isAddPlacePopupOpen} onClose={handleClosePopup}>
+			<PopupWithForm name="add-card" title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
 				<input
 					className="popup__input popup__input_type_title"
 					type="text"
@@ -123,10 +119,10 @@ function App() {
 			</PopupWithForm>
 
 			{/* <----     POPUP подтвержения удаления карточки    ----> */}
-			<PopupWithForm name="delete-card" title="Вы уверены?" buttonText="Да" onClose={handleClosePopup} />
+			<PopupWithForm name="delete-card" title="Вы уверены?" buttonText="Да" onClose={closeAllPopups} />
 
 			{/* <----     POPUP открытия карточки    ----> */}
-			<ImagePopup card={selectedCard} onClose={handleClosePopup}></ImagePopup>
+			<ImagePopup card={selectedCard} onClose={closeAllPopups}></ImagePopup>
 
 		</div>
 	);
