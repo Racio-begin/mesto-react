@@ -21,7 +21,7 @@ function PopupWithForm({ name, title, isOpen, onClose, ...props }) {
 					name={`${name}-form`}
 					id={`${name}-form`}
 					noValidate=""
-					// либо так noValidate
+				// либо так noValidate
 				>
 					{props.children}
 

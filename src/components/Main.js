@@ -13,7 +13,8 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 						className="button profile__button-avatar-edit" type="button">
 						<img
 							className="profile__avatar"
-							src="<%=require('./images/Jacques-Yves_Cousteau.jpg')%>"
+							// src="<%=require('./images/Jacques-Yves_Cousteau.jpg')%>"
+							src='#'
 							alt="Фотография пользователя"
 						/>
 						{/* <img class="profile__avatar" src="<%=require('./images/render_loading.gif')%>" alt="Фотография пользователя"> */}
