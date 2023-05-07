@@ -9,8 +9,6 @@ import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 // import ImagePopup from './ImagePopup';
 
-import api from '../utils/Api';
-
 function App() {
 
 	const [isEditAvatarPopupOpen, setEditAvatarPopupOpened] = useState(false);

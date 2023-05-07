@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import Card from './Card';
 import api from '../utils/Api';
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 
-const [userName, setUserName] = useState("");
-const [userDescription , setUserDescription] = useState("");
-const [userAvatar, setUserAvatar] = useState("");
+	const [userName, setUserName] = useState("");
+	const [userDescription, setUserDescription] = useState("");
+	const [userAvatar, setUserAvatar] = useState("");
+	const [cards, setCards] = useState([]);
 
-useEffect(() => {
-	api
-		.getUserData()
-		.then(
-			(userInfo) => (
-				setUserName(userInfo.name),
-				setUserDescription(userInfo.about),
-				setUserAvatar(userInfo.avatar)
+	useEffect(() => {
+		api
+			.getUserData()
+			.then(
+				(userInfo) => (
+					setUserName(userInfo.name),
+					setUserDescription(userInfo.about),
+					setUserAvatar(userInfo.avatar)
+				)
 			)
-		)
-		.catch((err) => console.log(`Ошибка ${err}`))
-}, [])
+			.catch((err) => console.log(`Ошибка ${err}`))
+	}, []);
+
+	useEffect(() => {
+		api
+			.getInitialCards()
+			.then(
+				(cards) =>
+					setCards(cards)
+			)
+			.catch((err) => console.log(`Ошибка ${err}`))
+	}, []);
 
 	return (
 		<main className="content">
@@ -61,9 +73,17 @@ useEffect(() => {
 			</section>
 
 			<section className="elements">
-				<ul className="elements__content"></ul>
+				<ul className="elements__content">
+				{
+            cards.map((item) => (
+              <Card key={item._id} card={item} onCardClick={onCardClick} />
+            ))
+          }
+				</ul>
 			</section>
 		</main>
+
+
 
 	)
 };
