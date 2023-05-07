@@ -4,7 +4,7 @@ function Card(props) {
 
 	function handleClick() {
 		props.onCardClick(props.card);
-	}
+	};
 
 	return (
 		<div id="elements__template">
@@ -32,7 +32,8 @@ function Card(props) {
 				</div>
 			</li>
 		</div>
-	)
-}
+	);
+
+};
 
 export default Card

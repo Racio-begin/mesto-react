@@ -7,6 +7,9 @@
 @import url(../src/blocks/page/page.css);
 @import url(../src/blocks/page/__header/page__header.css);
 
+/*  Body  */
+@import url(../src/blocks/body/body.css);
+
 /*  Header  */
 @import url(../src/blocks/header/header.css);
 @import url(../src/blocks/header/__logo/header__logo.css);

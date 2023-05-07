@@ -7,7 +7,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
-// import ImagePopup from './ImagePopup';
+import ImagePopup from './ImagePopup';
 
 function App() {
 
@@ -126,7 +126,7 @@ function App() {
 			<PopupWithForm name="delete-card" title="Вы уверены?" buttonText="Да" onClose={handleClosePopup} />
 
 			{/* <----     POPUP открытия карточки    ----> */}
-			{/* <ImagePopup card={selectedCard} onClose={handleClosePopup} /> */}
+			<ImagePopup card={selectedCard} onClose={handleClosePopup}></ImagePopup>
 
 
 			{/* ----     Шаблон карточки    ----
@@ -135,6 +135,7 @@ function App() {
 		</div>
 
 	);
+
 };
 
 export default App;
