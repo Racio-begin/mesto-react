@@ -14,7 +14,8 @@ function App() {
 	const [isEditAvatarPopupOpen, setEditAvatarPopupOpened] = useState(false);
 	const [isAddPlacePopupOpen, setAddPlacePopupOpened] = useState(false);
 	const [isEditProfilePopupOpen, setEditProfileOpened] = useState(false);
-	const [selectedCard, setSelectedCard] = useState(null);
+
+	const [selectedCard, setSelectedCard] = useState({isOpen: false, card: {}});
 
 	function handleEditAvatarClick() {
 		setEditAvatarPopupOpened(true)
@@ -29,6 +30,7 @@ function App() {
 	};
 
 	function handleCardClick(card) {
+		{isOpen: true}
 		setSelectedCard(card)
 	};
 
@@ -122,7 +124,7 @@ function App() {
 			<PopupWithForm name="delete-card" title="Вы уверены?" buttonText="Да" onClose={closeAllPopups} />
 
 			{/* <----     POPUP открытия карточки    ----> */}
-			<ImagePopup card={selectedCard} onClose={closeAllPopups}></ImagePopup>
+			<ImagePopup card={selectedCard} isOpen={true} onClose={closeAllPopups}></ImagePopup>
 
 		</div>
 	);
