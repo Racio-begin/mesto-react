@@ -3,8 +3,8 @@ import React from 'react';
 function ImagePopup(props) {
 
 	return (
-		<div className={`popup popup_type_zoom-image ${props.card ? "popup_opened" : ""}`}>
-			<div className="popup__container-image">
+		<div className={`popup popup_type_zoom-image ${props.card ? "popup_opened" : ""}`} onClick={() => props.onClose(false)}>
+			<div className="popup__container-image" onClick={e => e.stopPropagation()}>
 
 				<button
 					className="button popup__button-close"

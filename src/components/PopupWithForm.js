@@ -3,8 +3,8 @@ import React from 'react';
 function PopupWithForm({ name, title, buttonText, isOpen, onClose, ...props }) {
 
 	return (
-		<div className={`popup ${isOpen ? 'popup_opened' : ''}`}>
-			<div className="popup__container">
+		<div className={`popup ${isOpen ? 'popup_opened' : ''}`} onClick={() => onClose(false)}>
+			<div className="popup__container" onClick={e => e.stopPropagation()}>
 
 				<button
 					className="button popup__button-close"
