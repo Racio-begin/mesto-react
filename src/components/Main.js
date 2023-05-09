@@ -10,6 +10,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 	const [userAvatar, setUserAvatar] = useState("");
 	const [cards, setCards] = useState([]);
 
+	// Производим запрос один раз при загрузке страницы
 	useEffect(() => {
 		Promise.all([api.getUserData(), api.getInitialCards()])
 			.then(([userInfo, cards]) => {
