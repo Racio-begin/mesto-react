@@ -21,7 +21,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 	function handleSubmit(e) {
 		// Запрещаем браузеру переходить по адресу формы
 		e.preventDefault();
-		
+
 		// Передаём значения управляемых компонентов во внешний обработчик
 		onUpdateUser({
 			name,
@@ -29,17 +29,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 		});
 	}
 
-	// useEffect(() => {
-	// 	setName(currentUser.name);
-	// 	setDescription(currentUser.about);
-	// }, [currentUser, isOpen]);
-
 	useEffect(() => {
-		if (currentUser.name) {
 		setName(currentUser.name);
 		setDescription(currentUser.about);
-		};
-}, [currentUser, isOpen]);
+	}, [currentUser, isOpen]);
 
 	return (
 		<PopupWithForm

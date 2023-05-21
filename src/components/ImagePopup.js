@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ImagePopup(props) {
+function ImagePopup({ card, onClose }) {
 
 	return (
-		<div className={`popup popup_type_zoom-image ${props.card ? "popup_opened" : ""}`} onClick={() => props.onClose(false)}>
+		<div className={`popup popup_type_zoom-image ${card ? "popup_opened" : ""}`} onClick={() => onClose(false)}>
 			<div className="popup__container-image" onClick={e => e.stopPropagation()}>
 
 				<button
@@ -11,18 +11,18 @@ function ImagePopup(props) {
 					name="popupCloseButton"
 					type="button"
 					aria-label="Закрыть окно"
-					onClick={props.onClose}
+					onClick={onClose}
 				/>
 
 				<img
 					className="popup__photo"
-					src={props.card?.link}
-					alt={props.card?.name}
+					src={card?.link}
+					alt={card?.name}
 				/>
 
 				<h3
 					className="popup__title-photo"
-				>{props.card?.name}
+				>{card?.name}
 				</h3>
 
 			</div>

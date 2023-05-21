@@ -54,20 +54,13 @@ function App() {
 		setSelectedCard(card)
 	};
 
-	// function handleUpdateUser(userData) {
-	// 	api.updateUserData(userData)
-	// 	.then( (data) => setCurrentUser(data))
-  //   .then( () => closeAllPopups())
-  //   .catch((err) => console.log(`Обновление данных профиля, App: ${err}`))
-	// };
-
 	function handleUpdateUser(userData) {
 		api.updateUserData(userData)
-		.then((data) => {
-			setCurrentUser(data)
-			setTimeout(() => closeAllPopups(), 1000);
-		})
-    .catch((err) => console.log(`Обновление данных профиля, App: ${err}`))
+			.then((data) => {
+				setCurrentUser(data)
+				setTimeout(() => closeAllPopups(), 1000);
+			})
+			.catch((err) => console.log(`Обновление данных профиля, App: ${err}`))
 	};
 
 	function closeAllPopups() {
