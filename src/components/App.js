@@ -8,6 +8,7 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
 
 import logo from '../images/logo.svg'
 import '../index.css';
@@ -114,30 +115,10 @@ function App() {
 					</PopupWithForm>
 
 					{/* <----     POPUP редактирования профиля    ----> */}
-					<PopupWithForm name="edit-profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
-						<input
-							className="popup__input popup__input_type_username"
-							type="text"
-							name="username"
-							id="username"
-							placeholder="Введите ваше имя"
-							minLength={2}
-							maxLength={40}
-							required=""
-						/>
-						<span className="username-error popup__input-error" />
-						<input
-							className="popup__input popup__input_type_description"
-							type="text"
-							name="description"
-							id="description"
-							placeholder="Введите информацию о себе"
-							minLength={2}
-							maxLength={200}
-							required=""
-						/>
-						<span className="description-error popup__input-error" />
-					</PopupWithForm>
+					<EditProfilePopup
+						isOpen={isEditProfilePopupOpen}
+						onClose={closeAllPopups}
+					/>
 
 					{/* <----     POPUP добавления карточки    ----> */}
 					<PopupWithForm name="add-card" title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
