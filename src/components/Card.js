@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
@@ -18,7 +18,7 @@ function Card({ card, onCardClick, onCardDelete, onCardLike }) {
 	};
 
 	function handleDeleteClick(e) {
-		// e.stopPropagation();
+		e.stopPropagation();
 		onCardDelete(card);
 	};
 
