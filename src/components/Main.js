@@ -1,23 +1,12 @@
-import { useState, useEffect, useContext } from 'react';
-import Card from './Card';
-import api from '../utils/Api';
-import defaultUserAvatar from '../images/render_loading.gif';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { useContext } from 'react';
+import CurrentUserContext from '../contexts/CurrentUserContext';
 
-function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
+import Card from './Card';
+import defaultUserAvatar from '../images/render_loading.gif';
+
+function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete }) {
 
 	const currentUser = useContext(CurrentUserContext);
-
-	const [cards, setCards] = useState([]);
-
-	useEffect(() => {
-		api.getInitialCards()
-			.then((cards) => {
-				setCards(cards)
-			})
-			.catch((err) => console.log(`Ошибка в промисах: ${err}`)
-			)
-	}, []);
 
 	return (
 		<main className="content">
@@ -61,7 +50,9 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 						<Card
 							key={card._id}
 							card={card}
-							onCardClick={onCardClick} />
+							onCardClick={onCardClick}
+							onCardLike={onCardLike}
+							onCardDelete={onCardDelete} />
 					))}
 				</ul>
 

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-import '../index.css';
-import logo from '../images/logo.svg'
+import CurrentUserContext from '../contexts/CurrentUserContext';
+import api from '../utils/Api';
 
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
-import api from '../utils/Api';
 
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import logo from '../images/logo.svg'
+import '../index.css';
 
 function App() {
 
@@ -29,6 +29,14 @@ function App() {
 			.catch((err) => console.log(`Получение данных пользователя, App: ${err}`))
 	});
 
+	const [cards, setCards] = useState([]);
+
+	useEffect(() => {
+		api.getInitialCards()
+			.then((cards) => setCards(cards))
+			.catch((err) => console.log(`Получение карточек, App: ${err}`))
+	}, []);
+
 	function handleEditAvatarClick() {
 		setEditAvatarPopupOpened(true)
 	};
@@ -42,7 +50,6 @@ function App() {
 	};
 
 	function handleCardClick(card) {
-		// console.log(card);
 		setSelectedCard(card)
 	};
 
@@ -51,6 +58,18 @@ function App() {
 		setAddPlacePopupOpened(false);
 		setEditProfileOpened(false);
 		setSelectedCard(null);
+	};
+
+	function handleCardLike(card) {
+		// Снова проверяем, есть ли уже лайк на этой карточке
+		const isLiked = card.likes.some(i => i._id === currentUser._id);
+
+		// Отправляем запрос в API и получаем обновлённые данные карточки
+		api.changeLikeCardStatus(card._id, !isLiked)
+			.then((newCard) => {
+				setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
+			})
+			.catch((err) => console.log(`Получение данных по лайкам, App: ${err}`))
 	};
 
 
@@ -62,10 +81,13 @@ function App() {
 					<Header logo={logo} />
 
 					<Main
+						cards={cards}
 						onEditAvatar={handleEditAvatarClick}
 						onEditProfile={handleEditProfileClick}
 						onAddPlace={handleAddPlaceClick}
 						onCardClick={handleCardClick}
+						onCardLike={handleCardLike}
+					// onCardDelete={handleCardDelete}
 					/>
 
 					<Footer />
