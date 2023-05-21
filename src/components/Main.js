@@ -15,9 +15,9 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 		Promise.all([api.getUserData(), api.getInitialCards()])
 			.then(([userInfo, cards]) => {
 				setUserName(userInfo.name),
-					setUserDescription(userInfo.about),
-					setUserAvatar(userInfo.avatar),
-					setCards(cards)
+				setUserDescription(userInfo.about),
+				setUserAvatar(userInfo.avatar),
+				setCards(cards)
 			})
 			.catch((err) => console.log(`Ошибка в промисах: ${err}`)
 			)
