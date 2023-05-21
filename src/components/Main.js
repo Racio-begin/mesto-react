@@ -1,22 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Card from './Card';
 import api from '../utils/Api';
-import defaultUserAvatar from '../images/render_loading.gif'
+import defaultUserAvatar from '../images/render_loading.gif';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 
-	const [userName, setUserName] = useState("");
-	const [userDescription, setUserDescription] = useState("");
-	const [userAvatar, setUserAvatar] = useState("");
+	const currentUser = useContext(CurrentUserContext);
+
 	const [cards, setCards] = useState([]);
 
-	// Производим запрос один раз при загрузке страницы
 	useEffect(() => {
-		Promise.all([api.getUserData(), api.getInitialCards()])
-			.then(([userInfo, cards]) => {
-				setUserName(userInfo.name),
-				setUserDescription(userInfo.about),
-				setUserAvatar(userInfo.avatar),
+		api.getInitialCards()
+			.then((cards) => {
 				setCards(cards)
 			})
 			.catch((err) => console.log(`Ошибка в промисах: ${err}`)
@@ -33,20 +29,20 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 						className="button profile__button-avatar-edit" type="button">
 						<img
 							className="profile__avatar"
-							src={userAvatar ?? defaultUserAvatar}
+							src={currentUser.avatar ?? defaultUserAvatar}
 							alt="Фотография пользователя"
 						/>
 					</button>
 
 					<div className="profile__info">
-						<h1 className="profile__username">{userName}</h1>
+						<h1 className="profile__username">{currentUser.name}</h1>
 						<button
 							onClick={onEditProfile}
 							className="profile__button-edit button"
 							type="button"
 							aria-label="Редактировать информацию в профиле"
 						/>
-						<p className="profile__description">{userDescription}</p>
+						<p className="profile__description">{currentUser.about}</p>
 					</div>
 				</div>
 
