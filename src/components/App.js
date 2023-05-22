@@ -9,6 +9,7 @@ import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 
 import logo from '../images/logo.svg'
 import '../index.css';
@@ -63,6 +64,15 @@ function App() {
 			.catch((err) => console.log(`Обновление данных профиля, App: ${err}`))
 	};
 
+	function handleUpdateAvatar(userData) {
+		api.updateUserAvatar(userData)
+			.then((data) => {
+				setCurrentUser(data)
+				setTimeout(() => closeAllPopups(), 1000);
+			})
+			.catch((err) => console.log(`Обновление аватара профиля, App: ${err}`))
+	};
+
 	function closeAllPopups() {
 		setEditAvatarPopupOpened(false);
 		setAddPlacePopupOpened(false);
@@ -111,17 +121,11 @@ function App() {
 				</div>
 
 				{/* <----     POPUP редактирования аватара    ----> */}
-				<PopupWithForm name="edit-avatar" title="Обновить аватар" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-					<input
-						className="popup__input popup__input_type_avatar"
-						type="url"
-						name="avatar"
-						id="avatar"
-						placeholder="Ссылка на изображение"
-						required=""
-					/>
-					<span className="avatar-error popup__input-error" />
-				</PopupWithForm>
+				<EditAvatarPopup
+					isOpen={isEditAvatarPopupOpen}
+					onClose={closeAllPopups}
+					onUpdateAvatar={handleUpdateAvatar}
+				/>
 
 				{/* <----     POPUP редактирования профиля    ----> */}
 				<EditProfilePopup
