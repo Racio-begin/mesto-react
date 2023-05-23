@@ -44,7 +44,6 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
 			</section>
 
 			<section className="elements">
-
 				<ul className="elements__content">
 					{cards.map((card) => (
 						<Card
@@ -52,10 +51,10 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
 							card={card}
 							onCardClick={onCardClick}
 							onCardLike={onCardLike}
-							onCardDelete={onCardDelete} />
+							onCardDelete={onCardDelete}
+						/>
 					))}
 				</ul>
-
 			</section>
 
 		</main>

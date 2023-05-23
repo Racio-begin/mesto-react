@@ -44,11 +44,11 @@ class Api {
 			)
 	};
 
-	sendingCard(name, link) {
+	sendingCard(userData) {
 		return fetch(`${this._url}/cards`, {
 			method: 'POST',
 			headers: this._headers,
-			body: JSON.stringify({ name, link }),
+			body: JSON.stringify(userData),
 		})
 			.then((res) =>
 				this._getResponseData(res)

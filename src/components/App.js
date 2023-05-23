@@ -7,9 +7,10 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
-import ImagePopup from './ImagePopup';
-import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
+import EditProfilePopup from './EditProfilePopup';
+import ImagePopup from './ImagePopup';
+import AddPlacePopup from './AddPlacePopup';
 
 import logo from '../images/logo.svg'
 import '../index.css';
@@ -25,13 +26,13 @@ function App() {
 
 	const [currentUser, setCurrentUser] = useState({});
 
+	const [cards, setCards] = useState([]);
+
 	useEffect(() => {
 		api.getUserData()
 			.then((userData) => setCurrentUser(userData))
 			.catch((err) => console.log(`Получение данных пользователя, App: ${err}`))
 	}, []);
-
-	const [cards, setCards] = useState([]);
 
 	useEffect(() => {
 		api.getInitialCards()
@@ -59,7 +60,7 @@ function App() {
 		api.updateUserData(userData)
 			.then((data) => {
 				setCurrentUser(data)
-				setTimeout(() => closeAllPopups(), 1000);
+				setTimeout(() => closeAllPopups(), 1000)
 			})
 			.catch((err) => console.log(`Обновление данных профиля, App: ${err}`))
 	};
@@ -68,7 +69,7 @@ function App() {
 		api.updateUserAvatar(userData)
 			.then((data) => {
 				setCurrentUser(data)
-				setTimeout(() => closeAllPopups(), 1000);
+				setTimeout(() => closeAllPopups(), 1000)
 			})
 			.catch((err) => console.log(`Обновление аватара профиля, App: ${err}`))
 	};
@@ -81,7 +82,7 @@ function App() {
 	};
 
 	function handleCardLike(card) {
-		// Снова проверяем, есть ли уже лайк на этой карточке
+		// Проверяем, есть ли уже лайк на этой карточке
 		const isLiked = card.likes.some(i => i._id === currentUser._id);
 
 		// Отправляем запрос в API и получаем обновлённые данные карточки
@@ -98,6 +99,13 @@ function App() {
 				setCards((state) => state.filter((c) => c._id !== card._id));
 			})
 			.catch((err) => console.log(`Удалние карточки с сервера, App: ${err}`))
+	};
+
+	function handleAddPlaceSubmit(userData) {
+		api.sendingCard(userData)
+			.then((newCard) => setCards([newCard, ...cards]))
+			.then(setTimeout(() => closeAllPopups(), 1000))
+			.catch((err) => console.log(`Добавление новой карточки, App: ${err}`))
 	};
 
 	return (
@@ -135,28 +143,11 @@ function App() {
 				/>
 
 				{/* <----     POPUP добавления карточки    ----> */}
-				<PopupWithForm name="add-card" title="Новое место" buttonText="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
-					<input
-						className="popup__input popup__input_type_title"
-						type="text"
-						name="title"
-						id="title"
-						required=""
-						placeholder="Название"
-						minLength={2}
-						maxLength={30}
-					/>
-					<span className="title-error popup__input-error" />
-					<input
-						className="popup__input popup__input_type_link"
-						type="url"
-						name="link"
-						id="link"
-						required=""
-						placeholder="Ссылка на картинку"
-					/>
-					<span className="link-error popup__input-error" />
-				</PopupWithForm>
+				<AddPlacePopup
+					isOpen={isAddPlacePopupOpen}
+					onClose={closeAllPopups}
+					onAddPlace={handleAddPlaceSubmit}
+				/>
 
 				{/* <----     POPUP подтвержения удаления карточки    ----> */}
 				<PopupWithForm
