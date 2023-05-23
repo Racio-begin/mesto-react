@@ -10,6 +10,8 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
 
+	console.log(name);
+
 	function handleChangeName(e) {
 		setName(e.target.value)
 	};
@@ -48,7 +50,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 				type="text"
 				name="username"
 				id="username"
-				value={name}
+				value={name || ''}
 				onChange={handleChangeName}
 				placeholder="Введите ваше имя"
 				minLength={2}
@@ -61,7 +63,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 				type="text"
 				name="description"
 				id="description"
-				value={description}
+				value={description || ''}
 				onChange={handleChangeDescription}
 				placeholder="Введите информацию о себе"
 				minLength={2}

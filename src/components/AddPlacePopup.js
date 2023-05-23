@@ -45,6 +45,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 				type="text"
 				name="title"
 				id="title"
+				value={name || ''}
 				onChange={handleChangeName}
 				required=""
 				placeholder="Название"
@@ -57,6 +58,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 				type="url"
 				name="link"
 				id="link"
+				value={link || ''}
 				onChange={handleChangeLink}
 				required=""
 				placeholder="Ссылка на картинку"
