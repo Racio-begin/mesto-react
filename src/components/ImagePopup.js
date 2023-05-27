@@ -8,11 +8,9 @@ function ImagePopup({ card, onClose }) {
 	return (
 		<div
 			className={`popup popup_type_zoom-image ${card ? "popup_opened" : ""}`}
-			onClick={() => onClose(false)}
 		>
 			<div
 				className="popup__container-image"
-				onClick={e => e.stopPropagation()}
 			>
 
 				<button

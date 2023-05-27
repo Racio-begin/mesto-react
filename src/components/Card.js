@@ -9,7 +9,6 @@ function Card({ card, onCardClick, onCardDelete, onCardLike }) {
 	const isOwn = card.owner._id === currentUser._id;
 
 	const isLiked = card.likes.some(i => i._id === currentUser._id);
-	
 	const cardLikeButtonClassName = (
 		`element__button-like ${isLiked && "element__button-like_active"}`
 	);
@@ -36,6 +35,7 @@ function Card({ card, onCardClick, onCardDelete, onCardLike }) {
 					onClick={handleClick}
 				/>
 
+	{/* Если карточка наша (соблюдено isOwn), то отображаем кнопку удаления */}
 				{isOwn && <button
 					className="button element__button-bin"
 					type="button"

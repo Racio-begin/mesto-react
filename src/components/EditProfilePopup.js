@@ -10,8 +10,6 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
 
-	console.log(name);
-
 	function handleChangeName(e) {
 		setName(e.target.value)
 	};
