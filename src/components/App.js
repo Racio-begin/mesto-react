@@ -60,7 +60,7 @@ function App() {
 		api.updateUserData(userData)
 			.then((data) => {
 				setCurrentUser(data)
-				setTimeout(() => closeAllPopups(), 1000)
+				closeAllPopups()
 			})
 			.catch((err) => console.log(`Обновление данных профиля, App: ${err}`))
 	};
@@ -69,7 +69,7 @@ function App() {
 		api.updateUserAvatar(userData)
 			.then((data) => {
 				setCurrentUser(data)
-				setTimeout(() => closeAllPopups(), 1000)
+				closeAllPopups()
 			})
 			.catch((err) => console.log(`Обновление аватара профиля, App: ${err}`))
 	};
@@ -104,7 +104,7 @@ function App() {
 	function handleAddPlaceSubmit(userData) {
 		api.sendingCard(userData)
 			.then((newCard) => setCards([newCard, ...cards]))
-			.then(setTimeout(() => closeAllPopups(), 1000))
+			.then(closeAllPopups)
 			.catch((err) => console.log(`Добавление новой карточки, App: ${err}`))
 	};
 
