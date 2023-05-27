@@ -1,9 +1,14 @@
 import React from 'react';
+import usePopupClose from '../hooks/usePopupClose';
 
 function PopupWithForm({ name, title, buttonText, isOpen, onClose, onSubmit, ...props }) {
 
+	usePopupClose(isOpen, onClose);
+
 	return (
-		<div className={`popup ${isOpen ? 'popup_opened' : ''}`} onClick={() => onClose(false)}>
+		<div className={`popup ${isOpen ? 'popup_opened' : ''}`}
+			onClick={() => onClose(false)}>
+
 			<div className="popup__container" onClick={e => e.stopPropagation()}>
 
 				<button
@@ -34,8 +39,9 @@ function PopupWithForm({ name, title, buttonText, isOpen, onClose, onSubmit, ...
 				</form>
 
 			</div>
+
 		</div>
-	)
+	);
 
 };
 

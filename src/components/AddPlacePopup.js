@@ -1,35 +1,23 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import useForm from "../hooks/useForm";
 
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 
-	const [name, setName] = useState('');
-	const [link, setLink] = useState('');
-
-	function handleChangeName(e) {
-		setName(e.target.value)
-	};
-
-	function handleChangeLink(e) {
-		setLink(e.target.value)
-	};
+	const { values, handleChange, setValues } = useForm({});
 
 	function handleSubmit(e) {
 		// Запрещаем браузеру переходить по адресу формы
 		e.preventDefault();
 
 		// Передаём значения управляемых компонентов во внешний обработчик
-		onAddPlace({
-			name,
-			link
-		});
+		onAddPlace(values);
 	};
 
 	useEffect(() => {
-		setName('');
-		setLink('');
-	}, [isOpen]);
+		if (!isOpen) setValues({});
+	}, [isOpen, setValues]);
 
 	return (
 		<PopupWithForm
@@ -45,8 +33,8 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 				type="text"
 				name="title"
 				id="title"
-				value={name || ''}
-				onChange={handleChangeName}
+				value={values.name || ''}
+				onChange={handleChange}
 				required=""
 				placeholder="Название"
 				minLength={2}
@@ -58,8 +46,8 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 				type="url"
 				name="link"
 				id="link"
-				value={link || ''}
-				onChange={handleChangeLink}
+				value={values.link || ''}
+				onChange={handleChange}
 				required=""
 				placeholder="Ссылка на картинку"
 			/>

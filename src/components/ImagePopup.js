@@ -1,10 +1,19 @@
 import React from 'react';
+import usePopupClose from '../hooks/usePopupClose';
 
 function ImagePopup({ card, onClose }) {
 
+	usePopupClose(card?.link, onClose);
+
 	return (
-		<div className={`popup popup_type_zoom-image ${card ? "popup_opened" : ""}`} onClick={() => onClose(false)}>
-			<div className="popup__container-image" onClick={e => e.stopPropagation()}>
+		<div
+			className={`popup popup_type_zoom-image ${card ? "popup_opened" : ""}`}
+			onClick={() => onClose(false)}
+		>
+			<div
+				className="popup__container-image"
+				onClick={e => e.stopPropagation()}
+			>
 
 				<button
 					className="button popup__button-close"
