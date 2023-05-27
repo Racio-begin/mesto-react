@@ -27,36 +27,34 @@ function Card({ card, onCardClick, onCardDelete, onCardLike }) {
 	};
 
 	return (
-		<div id="elements__template">
-			<li className="element">
-				<img className="element__image"
-					src={card.link}
-					alt={card.name}
-					onClick={handleClick}
-				/>
+		<li className="element">
+			<img className="element__image"
+				src={card.link}
+				alt={card.name}
+				onClick={handleClick}
+			/>
 
-	{/* Если карточка наша (соблюдено isOwn), то отображаем кнопку удаления */}
-				{isOwn && <button
-					className="button element__button-bin"
-					type="button"
-					aria-label="Удалить место"
-					onClick={handleDeleteClick}
-				/>}
+			{/* Если карточка наша (соблюдено isOwn), то отображаем кнопку удаления */}
+			{isOwn && <button
+				className="button element__button-bin"
+				type="button"
+				aria-label="Удалить место"
+				onClick={handleDeleteClick}
+			/>}
 
-				<div className="element__description">
-					<h2 className="element__place">{card.name}</h2>
-					<div className="element__likes-container">
-						<button
-							className={cardLikeButtonClassName}
-							type="button"
-							aria-label="Оценить место"
-							onClick={handleLikeClick}
-						/>
-						<div className="element__like-counter">{card.likes.length}</div>
-					</div>
+			<div className="element__description">
+				<h2 className="element__place">{card.name}</h2>
+				<div className="element__likes-container">
+					<button
+						className={cardLikeButtonClassName}
+						type="button"
+						aria-label="Оценить место"
+						onClick={handleLikeClick}
+					/>
+					<div className="element__like-counter">{card.likes.length}</div>
 				</div>
-			</li>
-		</div>
+			</div>
+		</li>
 	);
 
 };
