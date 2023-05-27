@@ -60,8 +60,8 @@ function App() {
 		api.updateUserData(userData)
 			.then((data) => {
 				setCurrentUser(data)
-				closeAllPopups()
 			})
+			.then(() => closeAllPopups())
 			.catch((err) => console.log(`Обновление данных профиля, App: ${err}`))
 	};
 
@@ -69,8 +69,8 @@ function App() {
 		api.updateUserAvatar(userData)
 			.then((data) => {
 				setCurrentUser(data)
-				closeAllPopups()
 			})
+			.then(() => closeAllPopups())
 			.catch((err) => console.log(`Обновление аватара профиля, App: ${err}`))
 	};
 
