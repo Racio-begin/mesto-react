@@ -101,10 +101,19 @@ function App() {
 			.catch((err) => console.log(`Удалние карточки с сервера, App: ${err}`))
 	};
 
+	// function handleAddPlaceSubmit(userData) {
+	// 	api.sendingCard(userData)
+	// 		.then((newCard) => {
+	// 			setCards([newCard, ...cards])
+	// 		})
+	// 		.then(() => closeAllPopups())
+	// 		.catch((err) => console.log(`Добавление новой карточки, App: ${err}`))
+	// };
+
 	function handleAddPlaceSubmit(userData) {
 		api.sendingCard(userData)
 			.then((newCard) => setCards([newCard, ...cards]))
-			.then(closeAllPopups)
+			.then(() => closeAllPopups())
 			.catch((err) => console.log(`Добавление новой карточки, App: ${err}`))
 	};
 

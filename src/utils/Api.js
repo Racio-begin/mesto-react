@@ -40,12 +40,23 @@ class Api {
 		});
 	};
 
+	// sendingCard(userData) {
+	// 	return this._request('/cards', {
+	// 		method: 'POST',
+	// 		headers: this._headers,
+	// 		body: JSON.stringify(userData),
+	// 	});
+	// };
+
 	sendingCard(userData) {
-		return this._request('/cards', {
+		return fetch(`${this._url}/cards`, {
 			method: 'POST',
 			headers: this._headers,
 			body: JSON.stringify(userData),
-		});
+		})
+			.then((res) =>
+				this._getResponseData(res)
+			);
 	};
 
 	_likeCard(cardId) {

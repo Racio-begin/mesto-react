@@ -12,6 +12,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 		e.preventDefault();
 
 		// Передаём значения управляемых компонентов во внешний обработчик
+		// onAddPlace( values.name, values.link );
 		onAddPlace(values);
 	};
 
