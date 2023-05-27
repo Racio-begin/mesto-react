@@ -33,7 +33,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 				type="text"
 				name="title"
 				id="title"
-				value={values.name || ''}
+				value={values.title || ''}
 				onChange={handleChange}
 				required=""
 				placeholder="Название"
