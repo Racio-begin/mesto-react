@@ -24,7 +24,8 @@ function PopupWithForm({ name, title, buttonText, isOpen, onClose, onSubmit, ...
 					name={name}
 					id={name}
 					onSubmit={onSubmit}
-					noValidate="">
+					// todo: noValidate=""
+					>
 
 					{props.children}
 
