@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Header(props) {
+function Header({ logo }) {
 	return (
 		<header className="header page__header">
 			<img
 				className="header__logo"
-				src={props.logo}
+				src={logo}
 				alt="Логотип сайта Mesto Russia"
 			/>
 		</header>

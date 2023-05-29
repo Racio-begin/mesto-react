@@ -40,14 +40,6 @@ class Api {
 		});
 	};
 
-	// sendingCard(userData) {
-	// 	return this._request('/cards', {
-	// 		method: 'POST',
-	// 		headers: this._headers,
-	// 		body: JSON.stringify(userData),
-	// 	});
-	// };
-
 	sendingCard(userData) {
 		return fetch(`${this._url}/cards`, {
 			method: 'POST',

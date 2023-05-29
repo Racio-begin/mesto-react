@@ -33,7 +33,6 @@ function PopupWithForm({ name, title, buttonText, isOpen, onClose, onSubmit, ...
 						type="submit">
 						{buttonText}
 					</button>
-
 				</form>
 
 			</div>
