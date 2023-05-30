@@ -69,9 +69,6 @@ function App() {
 	function handleUpdateUser(userData) {
 		setIsLoading(true)
 		api.updateUserData(userData)
-			// .then((data) => {
-			// 	setCurrentUser(data)
-			// })
 			.then(setCurrentUser)
 			.then(closeAllPopups)
 			.catch(() => console.error(`Обновление данных профиля, App`))
@@ -81,9 +78,6 @@ function App() {
 	function handleUpdateAvatar(userData) {
 		setIsLoading(true)
 		api.updateUserAvatar(userData)
-			// .then((data) => {
-			// 	setCurrentUser(data)
-			// })
 			.then(setCurrentUser)
 			.then(closeAllPopups)
 			.catch(() => console.error(`Обновление аватара профиля, App`))
@@ -131,67 +125,67 @@ function App() {
 
 	return (
 		// todo: <AppContext.Provider value={{ isLoading, closeAllPopups }}>
-			<CurrentUserContext.Provider value={currentUser}>
-				<div className="page">
+		<CurrentUserContext.Provider value={currentUser}>
+			<div className="page">
 
-					<div className="page__content">
-						<Header logo={logo} />
+				<div className="page__content">
+					<Header logo={logo} />
 
-						<Main
-							cards={cards}
-							onEditAvatar={handleEditAvatarClick}
-							onEditProfile={handleEditProfileClick}
-							onAddPlace={handleAddPlaceClick}
-							onCardDelete={handleDeletePlaceClick}
-							onCardClick={handleCardClick}
-							onCardLike={handleCardLike}
-							
-						/>
+					<Main
+						cards={cards}
+						onEditAvatar={handleEditAvatarClick}
+						onEditProfile={handleEditProfileClick}
+						onAddPlace={handleAddPlaceClick}
+						onCardDelete={handleDeletePlaceClick}
+						onCardClick={handleCardClick}
+						onCardLike={handleCardLike}
 
-						<Footer />
-					</div>
-
-					{/* <----     POPUP редактирования аватара    ----> */}
-					<EditAvatarPopup
-						isOpen={isEditAvatarPopupOpen}
-						onClose={closeAllPopups}
-						onUpdateAvatar={handleUpdateAvatar}
-						isLoading={isLoading}
 					/>
 
-					{/* <----     POPUP редактирования профиля    ----> */}
-					<EditProfilePopup
-						isOpen={isEditProfilePopupOpen}
-						onClose={closeAllPopups}
-						onUpdateUser={handleUpdateUser}
-						isLoading={isLoading}
-					/>
-
-					{/* <----     POPUP добавления карточки    ----> */}
-					<AddPlacePopup
-						isOpen={isAddPlacePopupOpen}
-						onClose={closeAllPopups}
-						onAddPlace={handleAddPlaceSubmit}
-						isLoading={isLoading}
-					/>
-
-					{/* <----     POPUP подтвержения удаления карточки    ----> */}
-					<DeletePlacePopup
-						card={deletePlace}
-						isOpen={isDeletePlacePopupOpen}
-						onClose={closeAllPopups}
-						onCardDelete={handleDeletePlaceSubmit}
-						isLoading={isLoading}
-					/>
-
-					{/* <----     POPUP открытия карточки    ----> */}
-					<ImagePopup
-						card={selectedCard}
-						onClose={closeAllPopups}
-					/>
-
+					<Footer />
 				</div>
-			</CurrentUserContext.Provider>
+
+				{/* <----     POPUP редактирования аватара    ----> */}
+				<EditAvatarPopup
+					isOpen={isEditAvatarPopupOpen}
+					onClose={closeAllPopups}
+					onUpdateAvatar={handleUpdateAvatar}
+					isLoading={isLoading}
+				/>
+
+				{/* <----     POPUP редактирования профиля    ----> */}
+				<EditProfilePopup
+					isOpen={isEditProfilePopupOpen}
+					onClose={closeAllPopups}
+					onUpdateUser={handleUpdateUser}
+					isLoading={isLoading}
+				/>
+
+				{/* <----     POPUP добавления карточки    ----> */}
+				<AddPlacePopup
+					isOpen={isAddPlacePopupOpen}
+					onClose={closeAllPopups}
+					onAddPlace={handleAddPlaceSubmit}
+					isLoading={isLoading}
+				/>
+
+				{/* <----     POPUP подтвержения удаления карточки    ----> */}
+				<DeletePlacePopup
+					card={deletePlace}
+					isOpen={isDeletePlacePopupOpen}
+					onClose={closeAllPopups}
+					onCardDelete={handleDeletePlaceSubmit}
+					isLoading={isLoading}
+				/>
+
+				{/* <----     POPUP открытия карточки    ----> */}
+				<ImagePopup
+					card={selectedCard}
+					onClose={closeAllPopups}
+				/>
+
+			</div>
+		</CurrentUserContext.Provider>
 		// </AppContext.Provider>
 	);
 
