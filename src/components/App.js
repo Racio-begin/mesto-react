@@ -36,13 +36,13 @@ function App() {
 	useEffect(() => {
 		api.getUserData()
 			.then((userData) => setCurrentUser(userData))
-			.catch(`Получение данных пользователя, App: ${console.error}`)
+			.catch(() => console.error(`Получение данных пользователя, App`))
 	}, []);
 
 	useEffect(() => {
 		api.getInitialCards()
 			.then((cards) => setCards(cards))
-			.catch(`Получение карточек, App: ${console.error}`)
+			.catch(() => console.error(`Получение карточек, App`))
 	}, []);
 
 	function handleEditAvatarClick() {
@@ -69,22 +69,24 @@ function App() {
 	function handleUpdateUser(userData) {
 		setIsLoading(true)
 		api.updateUserData(userData)
-			.then((data) => {
-				setCurrentUser(data)
-			})
+			// .then((data) => {
+			// 	setCurrentUser(data)
+			// })
+			.then(setCurrentUser)
 			.then(closeAllPopups)
-			.catch(`Обновление данных профиля, App: ${console.error}`)
+			.catch(() => console.error(`Обновление данных профиля, App`))
 			.finally(() => setIsLoading(false))
 	};
 
 	function handleUpdateAvatar(userData) {
 		setIsLoading(true)
 		api.updateUserAvatar(userData)
-			.then((data) => {
-				setCurrentUser(data)
-			})
+			// .then((data) => {
+			// 	setCurrentUser(data)
+			// })
+			.then(setCurrentUser)
 			.then(closeAllPopups)
-			.catch(`Обновление аватара профиля, App: ${console.error}`)
+			.catch(() => console.error(`Обновление аватара профиля, App`))
 			.finally(() => setIsLoading(false))
 	};
 
@@ -105,7 +107,7 @@ function App() {
 			.then((newCard) => {
 				setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
 			})
-			.catch(`Получение данных по лайкам, App: ${console.error}`)
+			.catch(() => console.error(`Получение данных по лайкам, App`))
 	};
 
 	function handleDeletePlaceSubmit(card) {
@@ -114,7 +116,7 @@ function App() {
 				setCards((state) => state.filter((c) => c._id !== card._id));
 			})
 			.then(closeAllPopups)
-			.catch(`Удаление карточки, App: ${console.error}`)
+			.catch(() => console.error(`Удаление карточки, App`))
 			.finally(() => setIsLoading(false))
 	};
 
@@ -123,7 +125,7 @@ function App() {
 		api.sendingCard(userData)
 			.then((newCard) => setCards([newCard, ...cards]))
 			.then(closeAllPopups)
-			.catch(`Добавление новой карточки, App: ${console.error}`)
+			.catch(() => console.error(`Добавление новой карточки, App`))
 			.finally(() => setIsLoading(false))
 	};
 
